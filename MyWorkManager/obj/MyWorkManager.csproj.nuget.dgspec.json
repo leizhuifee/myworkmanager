@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\c#学习项目\\source\\MyWorkManager\\MyWorkManager\\MyWorkManager.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj": {}
   },
   "projects": {
-    "D:\\c#学习项目\\source\\MyWorkManager\\MyWorkManager\\MyWorkManager.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\c#学习项目\\source\\MyWorkManager\\MyWorkManager\\MyWorkManager.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj",
         "projectName": "MyWorkManager",
-        "projectPath": "D:\\c#学习项目\\source\\MyWorkManager\\MyWorkManager\\MyWorkManager.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\c#学习项目\\source\\MyWorkManager\\MyWorkManager\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -92,12 +92,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -106,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

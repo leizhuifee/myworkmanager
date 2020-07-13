@@ -6,17 +6,23 @@
    
     <table class="table table-bordered" id="ticketnumber">
 
-        <tr style="text-align:center">
+        <tr style="text-align: center">
+            <th>序号</th>
             <th>编号</th>
             <th>用户名</th>
-            
-            <th colspan="2"><div class="col-md-4">操作</div></th>
+
+            <th colspan="2">
+                <div class="col-md-4">操作</div>
+            </th>
         </tr>
         @{
+            int i = 0;
             foreach (var item in Model)
             {
+                i = i+1;
                
-                <tr style="text-align:center">
+                <tr >
+                    <th>@i</th>
                     <td>@item.Id</td>
                     <td>@item.UserName</td>
                     <td><a asp-controller="User" asp-action="UpDataUser" asp-route-Id="@item.Id,入库">修改</a></td>
