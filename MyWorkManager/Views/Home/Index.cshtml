@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MyWorkManager.Models.Homeimg>;
+
+@{ 
+    ViewBag.Title = "办公用品及饭票管理";
+}
+
+    <div class="container">
+        <div class="row">
+            @{
+                foreach (var item in Model)
+                {
+
+                        <div class="col-sm-6 col-md-4">
+                          
+                                        <div class="thumbnail">
+                                            <a  asp-controller=@item.ControllName asp-action="Index" asp-route-itemnaem=@item.Name><img src=@item.Url alt="..."></a>
+                                          <div class="caption">
+                                             <h3>@item.Name</h3>
+                                            </div>
+                                        </div>
+                    </div>
+                   
+                }
+            }
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/IMG/Homeimg/new.png" alt="...">
+                    <div class="caption">
+                        <h3>新增项目</h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+   

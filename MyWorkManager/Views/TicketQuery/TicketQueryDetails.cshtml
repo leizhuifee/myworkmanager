@@ -1,0 +1,91 @@
+﻿@using MyWorkManager.Models;
+@model MyWorkManager.viewModels.TicketQueryDetail;
+@{ ViewBag.Title = "明细查询";}
+
+<div class="container" style="margin:10px">
+
+    <form class="form-inline" asp-controller="TicketQuery" asp-action="TicketQueryDetails">
+        <div class="form-group">
+
+
+            <label for="exampleInputName2">起始时间:</label>
+            <input type="date" class="form-control" id="startime" value="@Model.ticketQueries[0].StarTime.ToString("yyyy-MM-dd")" asp-for="@Model.ticketQueries[0].StarTime">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">截至时间:</label>
+            <input type="date" class="form-control" id="endtime" value="@Model.ticketQueries[0].endTime.ToString("yyyy-MM-dd")" asp-for="@Model.ticketQueries[0].endTime">
+        </div>
+        <div class="form-group">
+            <label for="Paypath">支付方式:</label>
+            <select type="date" class="form-control" id="Paypath" value="" asp-for="@Model.ticketQueries[0].Paypath">
+                <option>全部</option>
+                <option>微信</option>
+                <option>支付宝</option>
+                <option>现票</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Colour">颜色:</label>
+            <select type="date" class="form-control" id="Colour" value="" asp-for="@Model.ticketQueries[0].Colour">
+                <option>全部</option>
+                <option>黄色</option>
+                <option>红色</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Type">类型:</label>
+            <select type="date" class="form-control" id="Type" value="" asp-for="@Model.ticketQueries[0].Type">
+                <option>全部</option>
+                <option>出库</option>
+                <option>入库</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">查询</button>
+
+    </form>
+
+    <table class="table table-bordered" id="ticketnumber">
+
+        <tr>
+            <th>日期</th>
+            <th>颜色</th>
+            <th>面值</th>
+            <th>数量</th>
+            <th>金额</th>
+            <th>类型</th>
+            <th>领用人</th>
+            <th>支付方式</th>
+
+        </tr>
+        @{
+            foreach (var item in Model.tickets)
+            {
+
+            <tr>
+                <td>@item.CreateTime</td>
+                <td>@item.Colour</td>
+                <td>@item.TicketValue</td>
+                <td>@item.Number</td>
+                <td>@item.SumMoneny</td>
+                <td>@item.Type</td>
+                <td>@item.HappenName</td>
+                <td>@item.Paypath</td>
+
+            </tr>
+
+            }
+        }
+    <tr>
+        <td>合计</td>
+        <td></td>
+        <td></td>
+        <td style="font-weight: bolder;font-size: 18px">@ViewBag.number</td>
+        <td style="font-weight: bolder;font-size: 18px">@ViewBag.summoeny</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+
+</div>
+
