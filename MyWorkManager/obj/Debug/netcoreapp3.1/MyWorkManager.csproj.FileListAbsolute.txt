@@ -158,5 +158,4 @@ D:\c#学习项目\source\MyWorkManager\MyWorkManager\obj\Debug\netcoreapp3.1\MyW
 D:\c#学习项目\source\MyWorkManager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.MvcApplicationPartsAssemblyInfo.cache
 D:\c#学习项目\source\MyWorkManager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 D:\c#学习项目\source\MyWorkManager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.csprojAssemblyReference.cache
-D:\c#学习项目\source\MyWorkManager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Coverall\Index.cshtml.g.cs
-D:\c#学习项目\source\MyWorkManager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Coverall\CoverOutAndIn.cshtml.g.cs
+D:\c#学习项目\source\MyWorkManager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs

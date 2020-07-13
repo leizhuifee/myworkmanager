@@ -9,6 +9,8 @@ namespace MyWorkManager.Models
 {
     public class LoginModel
     {
+
+        public string Id { get; set; }
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name="用户名")]
         public string UserName { get; set; }
