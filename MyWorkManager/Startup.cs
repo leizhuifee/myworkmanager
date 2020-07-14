@@ -41,7 +41,11 @@ namespace MyWorkManager
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(name: "LocalDB"), b => b.MigrationsAssembly("MyWorkManager"))
                  );
-            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<IdentityDbContext>().AddDefaultTokenProviders();
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<IdentityDbContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityDbContext>().AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;

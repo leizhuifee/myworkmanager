@@ -30,33 +30,42 @@ namespace MyWorkManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpDataUser(string id)
+        public async  Task<IActionResult> UpDataUser(string id)
         {
-            var user = _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
+            
+            LoginModel loginuser= new LoginModel()
+            {
+                Id = user.Id,
+                UserName = user.UserName
+                
+                
+              
+            };
             if (user!=null)
             {
-                return View(user);
+                return View(loginuser);
             }
             return RedirectToAction("Index");
         }
         [HttpPost]
         public async Task<IActionResult> UpDataUser(LoginModel loginModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                IdentityUser  user=new IdentityUser()
-                {
-                    UserName = loginModel.UserName,
-                    
-                };
-                var result = await _userManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    return View();
-                }
+                ModelState.AddModelError("", "请输入密码验证");
+                return View(loginModel);
             }
-            ModelState.AddModelError("","修改用户失败");
-            return View();
+           
+            var user = await _userManager.FindByIdAsync(loginModel.Id);
+            user.UserName = loginModel.UserName;
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "修改用户失败");
+            return View(loginModel);
         }
 
         public async Task<IActionResult> DeleteUser(string  id)

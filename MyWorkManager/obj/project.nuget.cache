@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gugT1Xoo7edqvSJQt7YLlMEqOBBiW5ozPAou4htwUPa57ctt/TaH+azcuu77ydANlLoLYfaxv4IcPSFy9Ka+aw==",
+  "dgSpecHash": "goFtwbRu8K4pb0dc79eoy6ynOrGi2yEhz9tL1gINfVLczwTT9SA6F/Lt005OQZmkOYoF/oiwRywe0z/4ceirnQ==",
   "success": true,
-  "projectFilePath": "D:\\c#学习项目\\source\\MyWorkManager\\MyWorkManager\\MyWorkManager.csproj",
+  "projectFilePath": "D:\\c#学习项目\\vscode\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

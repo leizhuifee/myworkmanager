@@ -1,0 +1,70 @@
+﻿@using MyWorkManager.Models;
+@model LoginModel;
+@{ Layout = null;}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" />
+    <title>修改用户</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="~/bootstrap/dist/js/jquery-3.5.1.min.js"></script>
+    <script src="~/bootstrap/dist/js/bootstrap.min.js"></script>
+   
+
+    
+
+
+</head>
+<body>
+    <div class="container">
+
+        <div>
+            <div class="page-header">
+                <h1> <small></small></h1>
+            </div>
+        </div>
+        <div class="container">
+
+
+            <form class="form-horizontal" asp-controller="User" asp-action="UpDataUser" method="post">
+
+                <div class="form-group">
+                    <label asp-for="Id" class="col-sm-2 control-label">编号</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control  " id="Id" readonly asp-for="Id" value=@Model.Id >
+                        <span asp-validation-for="Id" style="color:red"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="UserName"  asp-for="UserName" value=@Model.UserName>
+                        <span asp-validation-for="UserName" style="color:red"></span>
+                    </div>
+                </div>
+                <div class="form-group"  >
+                    <label asp-for="PassWord" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="PassWord" asp-for="PassWord" value="@Model.PassWord">
+                        
+                    </div>
+                </div>
+                   <div asp-validation-summary="ModelOnly"></div>
+              <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">确认</button>
+                        <a asp-controller="User" asp-action="Index" class="btn btn-primary">取消</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
