@@ -1,15 +1,17 @@
 ﻿@using Microsoft.AspNetCore.Identity;
-@model IEnumerable<IdentityUser>;
+@using MyWorkManager.Models
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
 
 
 <div class="container">
-   
+
     <table class="table table-bordered" id="ticketnumber">
 
         <tr style="text-align: center">
             <th>序号</th>
-            <th>编号</th>
-            <th>用户名</th>
+            
+            <th>角色名称</th>
 
             <th colspan="2">
                 <div class="col-md-4">操作</div>
@@ -19,22 +21,22 @@
             int i = 0;
             foreach (var item in Model)
             {
-                i = i+1;
-               
-                <tr >
+                i = i + 1;
+
+                <tr>
                     <th>@i</th>
-                    <td>@item.Id</td>
-                    <td>@item.UserName</td>
+                    
+                    <td>@item.Name</td>
                     <td><a class="btn btn-primary" asp-controller="User" asp-action="UpDataUser" asp-route-Id="@item.Id">修改</a></td>
-                    <td><a class="btn  btn-danger"asp-controller="User" asp-action="DeleteUser" asp-route-Id="@item.Id">删除</a></td>
+                    <td><a class="btn  btn-danger" asp-controller="User" asp-action="DeleteUser" asp-route-Id="@item.Id">删除</a></td>
 
                 </tr>
-               
+
             }
-           
+
 
         }
-       
+
     </table>
-  
+
 </div>
