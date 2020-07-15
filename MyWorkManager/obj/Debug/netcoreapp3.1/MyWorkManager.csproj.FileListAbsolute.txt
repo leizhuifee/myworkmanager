@@ -481,3 +481,6 @@ D:\c#学习项目\vscode\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Raz
 D:\c#学习项目\vscode\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
 D:\c#学习项目\vscode\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.csproj.CoreCompileInputs.cache
 D:\c#学习项目\vscode\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Home\MyError.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\User\UpDataUser.cshtml.g.cs

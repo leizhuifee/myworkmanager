@@ -39,21 +39,21 @@
                 </li>
             </ul>
             <form asp-action="Logout" asp-controller="Account" method="post" id="logoutForm" style="float: right">
-            <ul class="nav nav-pills  "  >
-                @if (SignInManager.IsSignedIn(User))
-                {
+                <ul class="nav nav-pills  ">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
 
-                    <li><a href="#">欢迎你：@User.Identity.Name @*@UserManager.GetUserName(User)*@</a></li>
-                    <li> <a href="javascript:document.getElementById('logoutForm').submit()">退出</a></li>
+                        <li><a href="#">欢迎你：@User.Identity.Name @*@UserManager.GetUserName(User)*@</a></li>
+                        <li> <a href="javascript:document.getElementById('logoutForm').submit()">退出</a></li>
+                        <li> <a asp-action="Register" asp-controller="Account">注册</a></li>
+                    }
+                    else
+                    {
 
-                }
-                else
-                {
+                        <li><a asp-action="Login" asp-controller="Account">登入</a></li>
 
-                    <li><a asp-action="Login" asp-controller="Account">登入</a></li>
-                    <li> <a asp-action="Register" asp-controller="Account">注册</a></li>
-                }
-            </ul>
+                    }
+                </ul>
         </form>
         </div>
     </nav>
