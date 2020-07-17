@@ -9,9 +9,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace MyWorkManager.Models
 {
     
-    public class Coveruser
+    public class Cover
     {
         public int Id { get; set; }
+        public  DateTime creatTime { get; set; }
         
         /// <summary>
         /// 衣领颜色
@@ -39,8 +40,13 @@ namespace MyWorkManager.Models
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "部门")]
         public string Department { get; set; }
-
-        public int GiveNumber { get; set; }
+        public  string Type { get; set; }
+        
+        [Required]
+        [MaxLength(2,ErrorMessage = "每人每次只能领用{1}条")]
+        [Display(Name = "领用数量")]
+        public int Number { get; set; }
+        
 
 
 

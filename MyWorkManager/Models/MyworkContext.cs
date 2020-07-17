@@ -19,6 +19,7 @@ namespace MyWorkManager.Models
        
         public DbSet<Models.Ticket> Tickets { get; set; }
         public DbSet<Models.Homeimg> Homeimgs { get; set; }
-        public  DbSet<Models.Coveruser> Coverusers { get; set; }
+        public  DbSet<Models.Cover> Covers { get; set; }
+        public DbSet<Models.CoverStock> CoverStocks { get; set; }
     }
 }

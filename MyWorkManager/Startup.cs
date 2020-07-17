@@ -31,6 +31,7 @@ namespace MyWorkManager
            
             services.AddDbContext<MyworkContext>(optionsAction: options => { options.UseSqlServer(Configuration.GetConnectionString(name: "LocalDB")); });
             services.AddTransient<Servers.ITicketRepository, Servers.TicketRepository>();
+            services.AddTransient<Servers.ICoverRepository, Servers.CoverRepository>();
             services.AddScoped<Servers.IHomeimg, Servers.HomeimgRepositorye>();
             
             services.AddDbContext<IdentityDbContext>(options =>
