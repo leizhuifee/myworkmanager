@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWorkManager.Models;
 using System;
-
+using Microsoft.AspNetCore.Identity.UI;
 
 namespace MyWorkManager
 {
@@ -55,25 +55,9 @@ namespace MyWorkManager
                 options.User.RequireUniqueEmail = false;
                 options.User.AllowedUserNameCharacters =
                     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            }).AddEntityFrameworkStores<IdentityDbContext>().AddDefaultTokenProviders();
-            //services.Configure<IdentityOptions>(
-            //    options =>
-            //    {
-            //        options.Password.RequireDigit = false;
-            //        options.Password.RequireLowercase = false;
-            //        options.Password.RequireNonAlphanumeric = false;
-            //        options.Password.RequireUppercase = false;
-            //        options.Password.RequiredLength = 6;
-            //        options.Password.RequiredUniqueChars = 1;
+            }).AddEntityFrameworkStores<IdentityDbContext>();
 
-            //        options.Lockout.AllowedForNewUsers = true;
-            //        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMilliseconds(5);
-            //        options.Lockout.MaxFailedAccessAttempts = 5;
 
-            //        options.User.RequireUniqueEmail = false;
-            //        options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-
-            //    });
             services.AddControllersWithViews();//зЂВс
         }
 
@@ -91,6 +75,7 @@ namespace MyWorkManager
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
             

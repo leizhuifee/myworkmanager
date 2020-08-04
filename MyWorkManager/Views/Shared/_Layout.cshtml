@@ -1,8 +1,9 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using MyWorkManager.Migrations
+﻿@using MyWorkManager.Migrations;
+@using Microsoft.AspNetCore.Identity;
 <!DOCTYPE html>
 @inject SignInManager<IdentityUser> SignInManager;
 @inject UserManager<IdentityUser> UserManager;
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -18,12 +19,12 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
 
-        <div class="container"  style="font-size: 18px">
-      
-            <ul class="nav nav-pills "  style="float: left" >
-                <li ><a asp-controller="Home" asp-action="Index">主页</a></li>
+        <div class="container" style="font-size: 18px">
+
+            <ul class="nav nav-pills " style="float: left">
+                <li><a asp-controller="Home" asp-action="Index">主页</a></li>
                 <li><a href="#">Projects</a></li>
                 <li><a href="#">Services</a></li>
                 <li role="presentation" class="dropdown">
@@ -31,10 +32,10 @@
                         用户管理 <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                   
-                        <li> <a class="nav nav-pills " asp-area="" asp-controller="User" asp-action="Index">用户管理</a></li>  
+
+                        <li> <a class="nav nav-pills " asp-area="" asp-controller="User" asp-action="Index">用户管理</a></li>
                         <li> <a class="nav nav-pills " asp-area="" asp-controller="Role" asp-action="Index">角色管理</a></li>
-                    
+
                     </ul>
                 </li>
             </ul>
@@ -54,17 +55,17 @@
 
                     }
                 </ul>
-        </form>
+            </form>
         </div>
     </nav>
-  
-<div   style="margin-top: 80px">
-    <div class="container">
-        @RenderBody()
+
+    <div style="margin-top: 80px">
+        <div class="container">
+            @RenderBody()
+        </div>
+
     </div>
 
-</div>
-    
 
 
 </body>
