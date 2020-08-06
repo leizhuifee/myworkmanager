@@ -8,7 +8,7 @@ namespace MyWorkManager.Models
     public class CoverStock
     {
 
-        
+        public int Id { get; set; }
         public string Colour { get; set; }
         
        
