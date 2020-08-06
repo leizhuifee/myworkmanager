@@ -227,7 +227,6 @@ C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
@@ -288,7 +287,6 @@ C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
-C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\staticwebassets\MyWorkManager.StaticWebAssets.Manifest.cache
@@ -484,3 +482,5 @@ D:\c#学习项目\vscode\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyW
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Home\MyError.cshtml.g.cs
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\User\UpDataUser.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Cover\Index.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.genruntimeconfig.cache
