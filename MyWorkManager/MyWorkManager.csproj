@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Ticket\Detail.cshtml" />
+    <Content Remove="Views\User\AddRolesToUser.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

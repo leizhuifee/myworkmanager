@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -24,7 +24,7 @@ namespace MyWorkManager.Models
         /// 款式
         /// </summary>
         [Required(ErrorMessage = "{0}不能为空")]
-        [Display(Name = "尺寸")]
+        [Display(Name = "款式")]
         public string Sleeve { get; set; }
         /// <summary>
         /// 大小
@@ -35,16 +35,17 @@ namespace MyWorkManager.Models
         public string Size { get; set; }
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "领用人")]
-        public  string Name { get; set; }
+        public  string  workerName { get; set; }
 
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "部门")]
-        public string Department { get; set; }
+        public string departmentName { get; set; }
         public  string Type { get; set; }
         
         [Required]
         [MaxLength(2,ErrorMessage = "每人每次只能领用{1}条")]
         [Display(Name = "领用数量")]
+        
         public int Number { get; set; }
         
 

@@ -1,13 +1,59 @@
-﻿@using MyWorkManager.viewModels;
+﻿@using MyWorkManager.Models;
+
+@model IEnumerable<Cover>;
+@{ ViewBag.Title = "库存";}
+
+<script>
+    //$(document).ready(function () {
+    //    var trcount = $("tr").length;
+    //    if (trcount < 2) {
+    //        $("#ticketnumber").css("display", "none");
+
+    //    }
+
+    });
+</script>
+<div class="container">
+
+    <h2 class="sub-header">Section title</h2>
 
 
-<!DOCTYPE html>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="ticketnumber">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-</body>
-</html>
+            <tr style="text-align:center">
+                <th>颜色</th>
+                <th>袖长</th>
+                <th>尺寸</th>
+                <th>数量</th>
+                <th colspan="2"><div class="col-md-4">操作</div></th>
+            </tr>
+            @{
+                foreach (var item in Model)
+                {
+
+                    <tr style="text-align:center">
+                        <td>@item.Colour</td>
+                        <td>@item.Sleeve</td>
+                        <td>@item.Size</td>
+                        <td>@item.Number</td>
+                        <td><a asp-controller="TicketIAO" asp-action="Index" asp-route-state="@item.Colour,入库">入库</a></td>
+                        <td><a asp-controller="TicketIAO" asp-action="Index" asp-route-state="@item.Colour,出库">出库</a></td>
+
+                    </tr>
+
+                }
+                <tr>
+                    <td>合计</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2"><a asp-controller="TicketQuery" asp-action="Index">查询明细</a></td>
+                </tr>
+
+            }
+
+        </table>
+    </div>
+</div>
+

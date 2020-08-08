@@ -15,36 +15,50 @@ namespace MyWorkManager.Servers
         {
             _myworkContext = myworkContext;
         }
-
-        public async Task<bool> AddCoverAsync(Cover cover)
+        #region 添加
+        public void AddCoverAsync(Cover cover)
         {
-           await _myworkContext.Covers.AddRangeAsync(cover);
-           var result = await _myworkContext.SaveChangesAsync();
-           return result > 0 ? true : false;
+            _myworkContext.Add(cover);
         }
 
-        public async Task<bool> AddCoverStockAsync(CoverStock coverStock)
+        public void AddDepartmentAsync(Department department)
         {
-            await _myworkContext.CoverStocks.AddRangeAsync(coverStock);
-            var result = await _myworkContext.SaveChangesAsync();
-            return result > 0 ? true : false;
+            _myworkContext.Add(department);
         }
 
-        public async Task<IEnumerable<Cover>> GetCoverByItemsAsync(CoverQueryItems coverQuery)
+        public void AddWorkerSize(WorkerSize workerSize)
+        {
+            _myworkContext.Add(workerSize);
+        }
+        #endregion
+
+        #region 获取所有
+        public async Task<IEnumerable<Cover>> GetCoversAsync()
         {
             return await _myworkContext.Covers.ToListAsync();
         }
-        
-        public async Task<IEnumerable<CoverStock>> GetCoverStockByItemsAsync(CoverQueryItems coverQuery)
+
+        public async Task<IEnumerable<Department>> GetDepartmentsAsync()
         {
-            return await  _myworkContext.CoverStocks.ToListAsync();
+            return await _myworkContext.departments.ToListAsync();
+        }
+        public async Task<IEnumerable<WorkerSize>> GetWorkerSizesAsync()
+        {
+            return await _myworkContext.workerSizes.ToListAsync();
+        }
+        #endregion
+
+
+        public async Task<WorkerSize> GetWorkerSizeByNameAsync(string name)
+        {
+            return await _myworkContext.workerSizes.FirstOrDefaultAsync(w => w.Name == name);
         }
 
-        public void UpdateCoverStockAsync(CoverStock coverStock)
+       
+
+        public async  Task SaveAsync()
         {
-             _myworkContext.CoverStocks.UpdateRange(coverStock);
-             _myworkContext.SaveChanges();
-           
+           await _myworkContext.SaveChangesAsync();
         }
     }
 }

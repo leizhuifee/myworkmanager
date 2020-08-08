@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace MyWorkManager.Models
 {
-    public class CoverStock
+    public class Department
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
-        public string Colour { get; set; }
-        
-       [Required]
-        public string Sleeve { get; set; }
-        [Required]
-        public string Size { get; set; }
-        [Required]
-        public int Number { get; set; }
+        [Required(ErrorMessage ="{0}不能为空")]
+        [Display(Name ="部门名称")]
+        public string Name { get; set; }
     }
 }
