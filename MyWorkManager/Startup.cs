@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using MyWorkManager.Models;
 using System;
 using Microsoft.AspNetCore.Identity.UI;
+using AutoMapper;
 
 namespace MyWorkManager
 {
@@ -28,7 +29,7 @@ namespace MyWorkManager
             {
                 options.AutomaticAuthentication = false;
             });
-           
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//×¢²áautomapper
             services.AddDbContext<MyworkContext>(optionsAction: options => { options.UseSqlServer(Configuration.GetConnectionString(name: "LocalDB")); });
             services.AddTransient<Servers.ITicketRepository, Servers.TicketRepository>();
             services.AddTransient<Servers.ICoverRepository, Servers.CoverRepository>();

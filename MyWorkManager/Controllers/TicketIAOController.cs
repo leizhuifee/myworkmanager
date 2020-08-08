@@ -59,7 +59,7 @@ namespace MyWorkManager.Controllers
         //        return RedirectToRoute(new { Controller= "TicketIAO",Action="Index", state = state });
 
         //    };
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         public IActionResult Index(Ticket ticket)
         {

@@ -1,0 +1,42 @@
+﻿@using MyWorkManager.Dto
+@model EditUserRoleDto;
+ 
+
+
+    <div class="container">
+       
+
+
+
+            <div class="container-fluid">
+                <div class="input-group">
+                    <input type="text" class="form-control" value="@Model.UserName" readonly>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="col-xs-6">
+                    <span class="btn btn-group-lg"> 角色</span>
+                    <ul class="list-group">
+                        @foreach (var item in Model.NotInRoles)
+                        {
+                            <li class="list-group-item"><a asp-action="AddRoleToUser" asp-controller="User" asp-route-Ids="@Model.Id,@item.Id">@item.Name</a></li>
+                        }
+
+                    </ul>
+                </div>
+
+                <div class="col-xs-6">
+                    <span class="btn btn-group-lg"> 拥有角色</span>
+                    <ul class="list-group">
+                        @foreach (var item in Model.InRoles)
+                        {
+                            <li class="list-group-item"><a asp-action="RemoveRoleToUser" asp-controller="User" asp-route-Ids="@Model.Id,@item.Id">@item.Name</a></li>
+                        }
+
+                    </ul>
+                </div>
+
+            </div>
+       
+        </div>

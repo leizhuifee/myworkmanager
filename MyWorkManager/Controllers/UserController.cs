@@ -6,18 +6,21 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyWorkManager.Dto;
 using MyWorkManager.Models;
 
 namespace MyWorkManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class UserController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserController(UserManager<IdentityUser> userManager)
+        public UserController(UserManager<IdentityUser> userManager ,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            this._roleManager = roleManager;
         }
 
        
@@ -88,5 +91,100 @@ namespace MyWorkManager.Controllers
             return RedirectToAction("Index");
 
         }
+        [HttpGet]
+        public async Task<IActionResult>EditRolesToUser( string id )
+        {
+            var roles = await _roleManager.Roles.ToListAsync();
+            var user = await _userManager.FindByIdAsync(id);
+            List<IdentityRole> inRoles = new List<IdentityRole>();
+            foreach (var role in roles)
+            {
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    inRoles.Add(role);
+                   
+                }
+            }
+            foreach (var item in inRoles)
+            {
+                roles.Remove(item);
+            }
+            var editUserRoleDto = new EditUserRoleDto()
+            {
+                Id=user.Id,
+                UserName = user.UserName,
+                NotInRoles=roles,
+                InRoles= inRoles
+
+            };
+            return View(editUserRoleDto);
+        }
+        [HttpGet]
+        public async Task<IActionResult>  AddRoleToUser(string ids)
+        {
+            string[] idstrs = ids.Split(',');
+            var user = await _userManager.FindByIdAsync(idstrs[0]);
+            var role = await _roleManager.FindByIdAsync(idstrs[1]);
+               await _userManager.AddToRoleAsync(user, role.Name);
+            var roles = await _roleManager.Roles.ToListAsync();
+            
+            List<IdentityRole> inRoles = new List<IdentityRole>();
+            foreach (var item in roles)
+            {
+                if (await _userManager.IsInRoleAsync(user, item.Name))
+                {
+                    inRoles.Add(item);
+                  
+                }
+            }
+            foreach (var item in inRoles)
+            {
+                roles.Remove(item);
+            }
+            var editUserRoleDto = new EditUserRoleDto()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                NotInRoles = roles,
+                InRoles = inRoles
+
+            };
+            return RedirectToAction("EditRolesToUser", editUserRoleDto);
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> RemoveRoleToUser(string ids)
+        {
+            string[] idstrs = ids.Split(',');
+            var user = await _userManager.FindByIdAsync(idstrs[0]);
+            var role = await _roleManager.FindByIdAsync(idstrs[1]);
+            await _userManager.RemoveFromRoleAsync(user, role.Name);
+            var roles = await _roleManager.Roles.ToListAsync();
+
+            List<IdentityRole> inRoles = new List<IdentityRole>();
+            foreach (var item in roles)
+            {
+                if (await _userManager.IsInRoleAsync(user, item.Name))
+                {
+                    inRoles.Add(item);
+
+                }
+            }
+            foreach (var item in inRoles)
+            {
+                roles.Remove(item);
+            }
+            var editUserRoleDto = new EditUserRoleDto()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                NotInRoles = roles,
+                InRoles = inRoles
+
+            };
+            return RedirectToAction("EditRolesToUser", editUserRoleDto);
+
+        }
+
     }
 }

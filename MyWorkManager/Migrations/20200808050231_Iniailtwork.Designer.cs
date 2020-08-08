@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWorkManager.Models;
 
 namespace MyWorkManager.Migrations
 {
     [DbContext(typeof(MyworkContext))]
-    partial class MyworkContextModelSnapshot : ModelSnapshot
+    [Migration("20200808050231_Iniailtwork")]
+    partial class Iniailtwork
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,15 +246,17 @@ namespace MyWorkManager.Migrations
                     b.Property<DateTime>("creatTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("departmentName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("departmentNameId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("workerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("workerNameId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("departmentNameId");
+
+                    b.HasIndex("workerNameId");
 
                     b.ToTable("Covers");
                 });
@@ -333,6 +337,22 @@ namespace MyWorkManager.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("MyWorkManager.Models.Worker", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("workers");
+                });
+
             modelBuilder.Entity("MyWorkManager.Models.WorkerSize", b =>
                 {
                     b.Property<int>("Id")
@@ -401,6 +421,21 @@ namespace MyWorkManager.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MyWorkManager.Models.Cover", b =>
+                {
+                    b.HasOne("MyWorkManager.Models.Department", "departmentName")
+                        .WithMany()
+                        .HasForeignKey("departmentNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyWorkManager.Models.Worker", "workerName")
+                        .WithMany()
+                        .HasForeignKey("workerNameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
