@@ -47,9 +47,16 @@ namespace MyWorkManager.Controllers
                 }
 
             }
+
+
             return View(Coversgroup);
         }
+        public async Task<IActionResult> AddCover()
+        {
 
+
+            return View();
+        }
 
     }
 }
