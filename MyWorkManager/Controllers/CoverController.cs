@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using MyWorkManager.Dto;
 using MyWorkManager.Models;
 using MyWorkManager.Servers;
+using MyWorkManager.viewModels;
 
 namespace MyWorkManager.Controllers
 {
     public class CoverController : Controller
     {
         private readonly ICoverRepository _coverRepository;
-
-        public CoverController(ICoverRepository coverRepository)
+        private readonly IMapper _mapper;
+        private List<Cover> stockcoversnumber = new List<Cover>();
+        public CoverController(ICoverRepository coverRepository,IMapper mapper)
         {
             _coverRepository = coverRepository;
+            this._mapper = mapper;
         }
         [HttpGet]
         public async Task< IActionResult> Index()
@@ -48,14 +53,17 @@ namespace MyWorkManager.Controllers
 
             }
 
-
+            stockcoversnumber = Coversgroup;
             return View(Coversgroup);
         }
-        public async Task<IActionResult> AddCover()
+        public IActionResult AddCover(string idtype)
         {
+            string[] it = idtype.Split(',');
+            int id =Convert.ToInt32( it[0]);
+            CoverworkerDepartmentViewModel coverworkerDepartmentViewModel = new CoverworkerDepartmentViewModel() { coverDto = _mapper.Map<CoverDto>(stockcoversnumber[id - 1]) };
 
 
-            return View();
+            return View(coverworkerDepartmentViewModel);
         }
 
     }

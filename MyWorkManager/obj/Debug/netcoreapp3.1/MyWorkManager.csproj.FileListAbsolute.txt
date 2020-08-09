@@ -670,3 +670,4 @@ C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Role\CreatRole.cshtml.g.cs
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\User\EditRolesToUser.cshtml.g.cs
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Cover\AddCover.cshtml.g.cs
