@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\MyWorkManager.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj": {}
   },
   "projects": {
-    "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\MyWorkManager.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\MyWorkManager.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj",
         "projectName": "MyWorkManager",
-        "projectPath": "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\MyWorkManager.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -87,7 +87,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.3, )"
+              "version": "[3.1.4, )"
             }
           },
           "imports": [

@@ -22,6 +22,7 @@
         <table class="table table-bordered" id="ticketnumber">
 
             <tr style="text-align:center">
+                <th>序号</th>
                 <th>颜色</th>
                 <th>袖长</th>
                 <th>尺寸</th>
@@ -29,16 +30,18 @@
                 <th colspan="2"><div class="col-md-4">操作</div></th>
             </tr>
             @{
+                int i = 0;
                 foreach (var item in Model)
                 {
-
+                    i = i + 1;
                     <tr style="text-align:center">
+                        <td>@i</td>
                         <td>@item.Colour</td>
                         <td>@item.Sleeve</td>
                         <td>@item.Size</td>
                         <td>@item.Number</td>
-                        <td><a asp-controller="TicketIAO" asp-action="Index" asp-route-state="@item.Colour,入库">入库</a></td>
-                        <td><a asp-controller="TicketIAO" asp-action="Index" asp-route-state="@item.Colour,出库">出库</a></td>
+                        <td><a asp-controller="Cover" asp-action="AddCover" asp-route-state="@i,入库">入库</a></td>
+                        <td><a asp-controller="Cover" asp-action="AddCover" asp-route-state="@i,出库">出库</a></td>
 
                     </tr>
 

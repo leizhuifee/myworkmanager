@@ -227,7 +227,6 @@ C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
@@ -288,7 +287,6 @@ C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
-C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\staticwebassets\MyWorkManager.StaticWebAssets.Manifest.cache
@@ -659,3 +657,17 @@ D:\c#学习项目\source\myworkmanage\leizhuifee\Mywork\MyWorkManager\obj\Debug\
 D:\c#学习项目\source\myworkmanage\leizhuifee\Mywork\MyWorkManager\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\c#学习项目\source\myworkmanage\leizhuifee\Mywork\MyWorkManager\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\c#学习项目\source\myworkmanage\leizhuifee\Mywork\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\User\EditRolesToUser.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\MyWorkManager.StaticWebAssets.xml
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Cover\Index.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Role\CreatRole.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\User\EditRolesToUser.cshtml.g.cs
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\MyWorkManager.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\myworkmanager\MyWorkManager\obj\Debug\netcoreapp3.1\Razor\Views\Cover\AddCover.cshtml.g.cs
