@@ -9366,11 +9366,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj",
+      "projectUniqueName": "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\MyWorkManager.csproj",
       "projectName": "MyWorkManager",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\MyWorkManager.csproj",
+      "projectPath": "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\MyWorkManager.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\myworkmanager\\MyWorkManager\\obj\\",
+      "outputPath": "D:\\c#学习项目\\source\\myworkmanage\\leizhuifee\\Mywork\\MyWorkManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

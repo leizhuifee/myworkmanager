@@ -13,6 +13,8 @@ namespace MyWorkManager.Profiles
         public CoverProfile()
         {
             CreateMap<Cover, CoverDto>();
+            CreateMap<CoverDto, Cover>();
+            CreateMap<CoverDto, WorkerSize>().ForMember(testc => testc.Name, opt => opt.MapFrom(src => src.workerName)).ForMember(testc => testc.Department, opt => opt.MapFrom(src => src.departmentName));
         }
 
     }

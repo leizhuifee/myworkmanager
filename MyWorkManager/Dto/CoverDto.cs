@@ -39,7 +39,7 @@ namespace MyWorkManager.Dto
         public string Type { get; set; }
 
         [Required]
-        [MaxLength(2, ErrorMessage = "每人每次只能领用{1}条")]
+        [Range(1,2, ErrorMessage = "每人每次只能领用{1}条")]
         [Display(Name = "领用数量")]
 
         public int Number { get; set; }

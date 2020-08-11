@@ -40,6 +40,9 @@ namespace MyWorkManager
                  );
 
             services.AddMvc(options => { options.Filters.Add(new Microsoft.AspNetCore.Mvc.AutoValidateAntiforgeryTokenAttribute()); });
+            services.AddAuthorization(options=> {
+                options.AddPolicy("È¨ÏÞÃû³Æ", policy => policy.RequireClaim("", ""));
+            });
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -57,7 +60,7 @@ namespace MyWorkManager
                 options.User.AllowedUserNameCharacters =
                     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             }).AddEntityFrameworkStores<IdentityDbContext>();
-
+            
 
             services.AddControllersWithViews();//×¢²á
         }

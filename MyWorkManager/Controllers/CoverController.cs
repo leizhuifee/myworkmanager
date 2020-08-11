@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyWorkManager.Dto;
 using MyWorkManager.Models;
+using MyWorkManager.QueryParameters;
 using MyWorkManager.Servers;
 using MyWorkManager.viewModels;
 
 namespace MyWorkManager.Controllers
 {
+    [Authorize]
     public class CoverController : Controller
     {
         private readonly ICoverRepository _coverRepository;
@@ -24,8 +27,8 @@ namespace MyWorkManager.Controllers
         [HttpGet]
         public async Task< IActionResult> Index()
         {
-          var covers= await  _coverRepository.GetCoversAsync();
-            var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g=>new { Colour= g.Key.Colour, Sleeve=g.Key.Sleeve, Size=g.Key.Size, Type=g.Key.Type, Number=g.Sum(testc=>testc.Number)});
+          var covers= await  _coverRepository.GetCoversAsync(null);
+            var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g => new { Colour = g.Key.Colour, Sleeve = g.Key.Sleeve, Size = g.Key.Size, Type = g.Key.Type, Number = g.Sum(testc => testc.Number) });
             List<Cover> Coversgroup = new List<Cover>();
             foreach (var item in groupcovers)
             {
@@ -47,7 +50,7 @@ namespace MyWorkManager.Controllers
                     if (item.Type == "出库" && i.Colour == item.Colour)
                     {
                         i.Number -= item.Number;
-                       
+
                     }
                 }
 
@@ -56,15 +59,82 @@ namespace MyWorkManager.Controllers
             stockcoversnumber = Coversgroup;
             return View(Coversgroup);
         }
-        public IActionResult AddCover(string idtype)
+        [Authorize(Roles =("Admin"))]
+        [HttpGet]
+        public async Task<IActionResult> AddCover(string covertype)
         {
-            string[] it = idtype.Split(',');
-            int id =Convert.ToInt32( it[0]);
-            CoverworkerDepartmentViewModel coverworkerDepartmentViewModel = new CoverworkerDepartmentViewModel() { coverDto = _mapper.Map<CoverDto>(stockcoversnumber[id - 1]) };
+            string[] cover = covertype.Split(',');
+            
+            CoverworkerDepartmentViewModel coverworkerDepartmentViewModel = new CoverworkerDepartmentViewModel() { 
+                coverDto = new CoverDto() {creatTime=DateTime.UtcNow, Colour= cover[0], Sleeve= cover[1], Size= cover[2], Type= cover[3] },
+                departments= (await _coverRepository.GetDepartmentsAsync()).Select(testc=>testc.Name).ToList(),
+                workerSizes=(await _coverRepository.GetWorkerSizesAsync()).Select(w=>w.Name).ToList(),
 
+        };
+            
 
             return View(coverworkerDepartmentViewModel);
         }
+        [HttpPost]
+        public async Task<IActionResult> AddCover(CoverDto   coverdto)
+        {
+            if (!ModelState.IsValid)
+            {
+                CoverworkerDepartmentViewModel coverworkerDepartmentViewModel = new CoverworkerDepartmentViewModel()
+                {
+                    coverDto = coverdto,
+                    departments = (await _coverRepository.GetDepartmentsAsync()).Select(testc => testc.Name).ToList(),
+                    workerSizes = (await _coverRepository.GetWorkerSizesAsync()).Select(w => w.Name).ToList(),
 
+                };
+                ModelState.AddModelError(string.Empty, "添加失败");
+                return View(coverworkerDepartmentViewModel);
+            }
+            if (coverdto.Type.Contains("入库"))
+            {
+                coverdto.workerName = null;
+                coverdto.departmentName = null;
+            }
+            _coverRepository.AddCoverAsync(_mapper.Map<CoverDto, Cover>(coverdto));
+            if (coverdto.Type.Contains("出库"))
+            {
+                var workersize = _mapper.Map<CoverDto, WorkerSize>(coverdto);
+                if (!_coverRepository.ExistWorker(coverdto.workerName))
+                {
+
+                    _coverRepository.AddWorkerSize(workersize);
+                }
+                var workersizeupdate = await _coverRepository.GetWorkerSizeByNameAsync(coverdto.workerName);
+                workersizeupdate.Size = coverdto.Size;
+                
+            }
+            await _coverRepository.SaveAsync();
+            return RedirectToAction("Index");
+
+        }
+
+        [HttpGet]
+      public IActionResult CoverDetail()
+        {
+            var coveredaitlparameter = new CoverDedailParameterViewModel()
+            {
+               coverParameter=new CoverParameter() { StartTime=DateTime.UtcNow,EndTime=DateTime.UtcNow}
+               
+            };
+
+            return View(coveredaitlparameter);
+        }
+        public async Task<IActionResult> CoverDetail(CoverParameter coverParameter)
+        {
+            var covers =await _coverRepository.GetCoversAsync(coverParameter);
+            var coveredaitlparameter = new CoverDedailParameterViewModel()
+            {
+                coverParameter = coverParameter,
+                covers = covers
+            };
+
+            return View(coveredaitlparameter);
+
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MyWorkManager.QueryParameters;
 
 namespace MyWorkManager.Servers
 {
@@ -33,9 +34,33 @@ namespace MyWorkManager.Servers
         #endregion
 
         #region 获取所有
-        public async Task<IEnumerable<Cover>> GetCoversAsync()
+        public async Task<IEnumerable<Cover>> GetCoversAsync(CoverParameter coverParameter)
         {
-            return await _myworkContext.Covers.ToListAsync();
+            IQueryable<Cover> result =  _myworkContext.Covers;
+            if (coverParameter!=null)
+            {
+                result = result.Where(t => t.creatTime >= coverParameter.StartTime && t.creatTime <= coverParameter.EndTime);
+                if (!coverParameter.Colour.Contains("0"))
+                {
+                    result = result.Where(c => c.Colour ==Enum.GetName(typeof(CoverColour), coverParameter.Colour));
+                }
+                if (!coverParameter.Sleeve.Contains("0"))
+                {
+                  
+                    result = result.Where(c => c.Sleeve == Enum.GetName(typeof(CoverSleeve), coverParameter.Sleeve));
+                }
+                if (!coverParameter.Size.Contains("0"))
+                {
+                    result = result.Where(c => c.Size == Enum.GetName(typeof(CoverSize), coverParameter.Size));
+                }
+                if (!coverParameter.Type.Contains("0"))
+                {
+                    result = result.Where(c => c.Type ==  coverParameter.Type);
+                }
+            }
+            
+             
+            return await result.ToListAsync();  
         }
 
         public async Task<IEnumerable<Department>> GetDepartmentsAsync()
@@ -48,13 +73,20 @@ namespace MyWorkManager.Servers
         }
         #endregion
 
-
+       
         public async Task<WorkerSize> GetWorkerSizeByNameAsync(string name)
         {
             return await _myworkContext.workerSizes.FirstOrDefaultAsync(w => w.Name == name);
         }
+        public bool ExistWorker(string name)
+        {
+            return   _myworkContext.workerSizes.Any(w=>w.Name.Contains(name));
+        }
 
-       
+        public void UpdateWorkerSize(WorkerSize workerSize)
+        {
+             _myworkContext.Update(workerSize);
+        }
 
         public async  Task SaveAsync()
         {

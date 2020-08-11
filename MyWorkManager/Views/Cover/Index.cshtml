@@ -11,7 +11,7 @@
 
     //    }
 
-    });
+    //});
 </script>
 <div class="container">
 
@@ -27,7 +27,7 @@
                 <th>袖长</th>
                 <th>尺寸</th>
                 <th>数量</th>
-                <th colspan="2"><div class="col-md-4">操作</div></th>
+                <th ><div class="col-md-4">操作</div></th>
             </tr>
             @{
                 int i = 0;
@@ -40,19 +40,20 @@
                         <td>@item.Sleeve</td>
                         <td>@item.Size</td>
                         <td>@item.Number</td>
-                        <td><a asp-controller="Cover" asp-action="AddCover" asp-route-state="@i,入库">入库</a></td>
-                        <td><a asp-controller="Cover" asp-action="AddCover" asp-route-state="@i,出库">出库</a></td>
+                        
+                        <td><a asp-controller="Cover" asp-action="AddCover" asp-route-covertype="@item.Colour,@item.Sleeve,@item.Size,出库">出库</a></td>
 
                     </tr>
 
                 }
-                <tr>
-                    <td>合计</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td colspan="2"><a asp-controller="TicketQuery" asp-action="Index">查询明细</a></td>
-                </tr>
+        <tr>
+            <td>合计</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td ><a asp-controller="Cover" asp-action="CoverDetail">查询明细</a></td>
+        </tr>
 
             }
 

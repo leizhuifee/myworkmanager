@@ -13,6 +13,32 @@ namespace MyWorkManager.Models
         现票,
     }
 
-   
+   public enum CoverColour
+    {
+       
+        蓝领,
+        黄领,
+        红领
+
+    }
+
+    public enum CoverSleeve
+    {
+        
+         长袖,
+         短袖,
+         长袖薄
+    }
+
+    public enum CoverSize
+    {
+        
+        小小,
+        小,
+        中,
+        大,
+        特大,
+        加特,
+    }
 
 }

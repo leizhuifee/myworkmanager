@@ -29,57 +29,64 @@
         <div class="container">
 
 
-            <form class="form-horizontal" asp-controller="TicketIAO" asp-action="Index" method="post">
+            <form class="form-horizontal" asp-controller="Cover" asp-action="AddCover" method="post">
 
                 <div class="form-group">
                     <label asp-for="coverDto.creatTime" class="col-sm-2 control-label">日期</label>
                     <div class="col-sm-10">
-                        <input type="datetime" class="form-control backcolour " id="Colour" readonly asp-for="coverDto.creatTime" value=@Model.coverDto.creatTime>
-                        <span asp-validation-for="coverDto.creatTime" style="color:red"></span>
+                        <input type="date" class="form-control backcolour " id="creatTime"  asp-for="@Model.coverDto.creatTime" value=@Model.coverDto.creatTime.ToString("yyyy-MM-dd")>
+                        <span asp-validation-for="@Model.coverDto.creatTime" style="color:red"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">颜色</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputText3" readonly asp-for="coverDto.Colour" value=@Model.TicketValue>
-                        <span asp-validation-for="TicketValue" style="color:red"></span>
+                        <input type="text" class="form-control" id="Colour" readonly asp-for="@Model.coverDto.Colour" value=@Model.coverDto.Colour>
+                        <span asp-validation-for="@Model.coverDto.Colour" style="color:red"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">尺寸</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" readonly id="Sleeve" asp-for="@Model.coverDto.Sleeve">
+                        <span asp-validation-for="@Model.coverDto.Sleeve" style="color:red"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">大小</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" readonly id="Size" asp-for="@Model.coverDto.Size">
+                        <span asp-validation-for="@Model.coverDto.Size" style="color:red"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">数量</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="Number" asp-for="Number">
-                        <span asp-validation-for="Number" style="color:red"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">金额</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="SumMoneny" asp-for="SumMoneny">
-                        <span asp-validation-for="SumMoneny" style="color:red"></span>
+                        <input type="text" class="form-control" id="SumMoneny" asp-for="@Model.coverDto.Number">
+                        <span asp-validation-for="@Model.coverDto.Number" style="color:red"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">类型</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="Type" asp-for="Type" value=@Model.Type readonly>
-                        <span asp-validation-for="Type" style="color:red"></span>
+                        <input type="text" class="form-control" id="Type" asp-for="@Model.coverDto.Type" value=@Model.coverDto.Type readonly>
+                        <span asp-validation-for="@Model.coverDto.Type" style="color:red"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="HappenName" class="col-sm-2 control-label">领用人</label>
+                    <label asp-for="coverDto.workerName" class="col-sm-2 control-label">领用人</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="HappenName" asp-for="HappenName">
-                        <span asp-validation-for="HappenName" style="color:red"></span>
+                        <select class="form-control" id="Paypath" asp-for="@Model.coverDto.workerName" asp-items="@new SelectList(Model.workerSizes)"></select>
+                        <span asp-validation-for="@Model.coverDto.workerName" style="color:red"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">支付方式</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">部门</label>
                     <div class="col-sm-10">
-                        <select class="form-control" id="Paypath" asp-for="Paypath" asp-items="Html.GetEnumSelectList<TicketPaypath>()"></select>
+                        <select class="form-control" id="Paypath" asp-for="@Model.coverDto.departmentName" asp-items="@new SelectList(Model.departments)"></select>
                         @*<input type="text" class="form-control" id="Paypath" asp-for="Paypath">*@
-                        <span asp-validation-for="Paypath" style="color: red"></span>
+                        <span asp-validation-for="@Model.coverDto.departmentName" style="color: red"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -93,7 +100,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        var type = $("#inputText3").val()
+        var type = $("#Colour").val()
         if (type == 0.5) {
             $("input").css("background-color", "#ffd800");
             $("h1").html("黄色");
