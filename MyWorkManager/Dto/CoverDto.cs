@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWorkManager.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,27 +16,27 @@ namespace MyWorkManager.Dto
         /// </summary>
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "衣领颜色")]
-        public string Colour { get; set; }
+        public CoverColour Colour { get; set; }
         /// <summary>
         /// 款式
         /// </summary>
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "款式")]
-        public string Sleeve { get; set; }
+        public CoverSleeve Sleeve { get; set; }
         /// <summary>
         /// 大小
         /// </summary>
 
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "大小")]
-        public string Size { get; set; }
+        public CoverSize Size { get; set; }
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "领用人")]
         public string workerName { get; set; }
 
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "部门")]
-        public string departmentName { get; set; }
+        public  string departmentName { get; set; }
         public string Type { get; set; }
 
         [Required]

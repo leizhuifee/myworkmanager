@@ -15,6 +15,8 @@
     <Compile Remove="Migrations\20200711080026_creatcover.Designer.cs" />
     <Compile Remove="Migrations\20200711080356_creatcover.cs" />
     <Compile Remove="Migrations\20200711080356_creatcover.Designer.cs" />
+    <Compile Remove="Migrations\20200812021409_enum.cs" />
+    <Compile Remove="Migrations\20200812021409_enum.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

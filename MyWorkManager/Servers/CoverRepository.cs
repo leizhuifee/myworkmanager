@@ -40,18 +40,18 @@ namespace MyWorkManager.Servers
             if (coverParameter!=null)
             {
                 result = result.Where(t => t.creatTime >= coverParameter.StartTime && t.creatTime <= coverParameter.EndTime);
-                if (!coverParameter.Colour.Contains("0"))
+                if (!coverParameter.Colour.ToString().Contains("0"))
                 {
-                    result = result.Where(c => c.Colour ==Enum.GetName(typeof(CoverColour), coverParameter.Colour));
+                    result = result.Where(c => c.Colour == coverParameter.Colour);
                 }
-                if (!coverParameter.Sleeve.Contains("0"))
+                if (!coverParameter.Sleeve.ToString().Contains("0"))
                 {
                   
-                    result = result.Where(c => c.Sleeve == Enum.GetName(typeof(CoverSleeve), coverParameter.Sleeve));
+                    result = result.Where(c => c.Sleeve == coverParameter.Sleeve);
                 }
-                if (!coverParameter.Size.Contains("0"))
+                if (!coverParameter.Size.ToString().Contains("0"))
                 {
-                    result = result.Where(c => c.Size == Enum.GetName(typeof(CoverSize), coverParameter.Size));
+                    result = result.Where(c => c.Size ==  coverParameter.Size);
                 }
                 if (!coverParameter.Type.Contains("0"))
                 {

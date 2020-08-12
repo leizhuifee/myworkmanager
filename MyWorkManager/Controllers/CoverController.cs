@@ -66,7 +66,7 @@ namespace MyWorkManager.Controllers
             string[] cover = covertype.Split(',');
             
             CoverworkerDepartmentViewModel coverworkerDepartmentViewModel = new CoverworkerDepartmentViewModel() { 
-                coverDto = new CoverDto() {creatTime=DateTime.UtcNow, Colour= cover[0], Sleeve= cover[1], Size= cover[2], Type= cover[3] },
+                coverDto = new CoverDto() {creatTime=DateTime.UtcNow, Colour=(CoverColour) Enum.Parse(typeof(CoverColour), cover[0]), Sleeve= (CoverSleeve)Enum.Parse(typeof(CoverSleeve), cover[1]), Size= (CoverSize)Enum.Parse(typeof(CoverSize), cover[2]), Type= cover[3] },
                 departments= (await _coverRepository.GetDepartmentsAsync()).Select(testc=>testc.Name).ToList(),
                 workerSizes=(await _coverRepository.GetWorkerSizesAsync()).Select(w=>w.Name).ToList(),
 

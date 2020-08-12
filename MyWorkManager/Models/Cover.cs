@@ -13,26 +13,26 @@ namespace MyWorkManager.Models
     {
         public int Id { get; set; }
         public  DateTime creatTime { get; set; }
-        
+
         /// <summary>
         /// 衣领颜色
         /// </summary>
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "衣领颜色")]
-        public string Colour { get; set; }
+        public CoverColour Colour { get; set; }
         /// <summary>
         /// 款式
         /// </summary>
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "款式")]
-        public string Sleeve { get; set; }
+        public CoverSleeve Sleeve { get; set; }
         /// <summary>
         /// 大小
         /// </summary>
 
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "大小")]
-        public string Size { get; set; }
+        public CoverSize Size { get; set; }
         [Required(ErrorMessage = "{0}不能为空")]
         [Display(Name = "领用人")]
         public  string  workerName { get; set; }

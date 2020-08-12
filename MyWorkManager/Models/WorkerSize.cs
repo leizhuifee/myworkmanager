@@ -21,7 +21,7 @@ namespace MyWorkManager.Models
 
         public string Name { get; set; }
        
-        public string Size { get; set; }
+        public CoverSize Size { get; set; }
 
 
         public string Department { get; set; }

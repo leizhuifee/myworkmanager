@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWorkManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,9 +12,9 @@ namespace MyWorkManager.QueryParameters
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
-        public string  Colour { get; set; }
-        public string Sleeve { get; set; }
-        public string Size { get; set; }
+        public CoverColour Colour { get; set; }
+        public CoverSleeve Sleeve { get; set; }
+        public CoverSize Size { get; set; }
 
         public string Type { get; set; }
     }
