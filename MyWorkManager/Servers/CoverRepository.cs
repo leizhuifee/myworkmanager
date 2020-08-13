@@ -37,23 +37,28 @@ namespace MyWorkManager.Servers
         public async Task<IEnumerable<Cover>> GetCoversAsync(CoverParameter coverParameter)
         {
             IQueryable<Cover> result =  _myworkContext.Covers;
+                
             if (coverParameter!=null)
             {
-                result = result.Where(t => t.creatTime >= coverParameter.StartTime && t.creatTime <= coverParameter.EndTime);
-                if (!coverParameter.Colour.ToString().Contains("0"))
+                if (coverParameter.StartTime.Year>1000&&coverParameter.EndTime.Year>1000)
+                {
+                    result = result.Where(t => t.creatTime >= coverParameter.StartTime && t.creatTime <= coverParameter.EndTime);
+                }
+               
+                if (!coverParameter.Colour.ToString().Contains("全部"))
                 {
                     result = result.Where(c => c.Colour == coverParameter.Colour);
                 }
-                if (!coverParameter.Sleeve.ToString().Contains("0"))
+                if (!coverParameter.Sleeve.ToString().Contains("全部"))
                 {
                   
                     result = result.Where(c => c.Sleeve == coverParameter.Sleeve);
                 }
-                if (!coverParameter.Size.ToString().Contains("0"))
+                if (!coverParameter.Size.ToString().Contains("全部"))
                 {
                     result = result.Where(c => c.Size ==  coverParameter.Size);
                 }
-                if (!coverParameter.Type.Contains("0"))
+                if (!coverParameter.Type.Contains("全部"))
                 {
                     result = result.Where(c => c.Type ==  coverParameter.Type);
                 }

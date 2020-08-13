@@ -24,5 +24,9 @@ namespace MyWorkManager.Models
        
         public DbSet<WorkerSize> workerSizes { get; set; }
         public DbSet<Department> departments { get; set; }
+
+        public DbSet<GoodsName> goodsNames { get; set; }
+        public DbSet<OfficeSupplies> officeSupplies { get; set; }
+        public DbSet<OfficeSuppliesControerNumbeerInfo> controerNumbeerInfos { get; set; }
     }
 }

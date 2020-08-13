@@ -1,6 +1,5 @@
 ﻿@using MyWorkManager.Models;
-
-@model IEnumerable<Cover>;
+@model MyWorkManager.viewModels.CoverStockParameterViewModel;
 @{ ViewBag.Title = "库存";}
 
 <script>
@@ -16,8 +15,39 @@
 <div class="container">
 
     <h2 class="sub-header">Section title</h2>
+    
+        <form class="form-inline" asp-controller="Cover" asp-action="Index" method="post">
+           
+            <div class="form-group">
+                <label for="Paypath">颜色:</label>
+                <select type="date" class="form-control" id="Paypath" value="" asp-for="@Model.coverParameter.Colour" asp-items="Html.GetEnumSelectList<CoverColour>()">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Colour">款式:</label>
+                <select type="date" class="form-control" id="Colour" value="" asp-for="@Model.coverParameter.Sleeve" asp-items="Html.GetEnumSelectList<CoverSleeve>()">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Colour">尺寸:</label>
+                <select type="date" class="form-control" id="Colour" value="" asp-for="@Model.coverParameter.Size" asp-items="Html.GetEnumSelectList<CoverSize>()">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Type">类型:</label>
+                <select type="date" class="form-control" id="Type" value="" asp-for="@Model.coverParameter.Type">
+                    <option>全部</option>
+                    <option>出库</option>
+                    <option>入库</option>
+                </select>
+            </div>
 
 
+            <button type="submit" class="btn btn-default">查询</button>
+        </form>
+   
+    <hr style="margin:10px" />
     <div class="table-responsive">
         <table class="table table-bordered" id="ticketnumber">
 
@@ -27,11 +57,11 @@
                 <th>袖长</th>
                 <th>尺寸</th>
                 <th>数量</th>
-                <th ><div class="col-md-4">操作</div></th>
+                <th colspan="2"><div class="col-md-4">操作</div></th>
             </tr>
             @{
                 int i = 0;
-                foreach (var item in Model)
+                foreach (var item in Model.covers)
                 {
                     i = i + 1;
                     <tr style="text-align:center">
@@ -40,20 +70,20 @@
                         <td>@item.Sleeve</td>
                         <td>@item.Size</td>
                         <td>@item.Number</td>
-                        
+                        <td><a asp-controller="Cover" asp-action="AddCover" asp-route-covertype="@item.Colour,@item.Sleeve,@item.Size,入库">入库</a></td>
                         <td><a asp-controller="Cover" asp-action="AddCover" asp-route-covertype="@item.Colour,@item.Sleeve,@item.Size,出库">出库</a></td>
 
                     </tr>
 
                 }
-        <tr>
-            <td>合计</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td ><a asp-controller="Cover" asp-action="CoverDetail">查询明细</a></td>
-        </tr>
+                <tr>
+                    <td>合计</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2"><a asp-controller="Cover" asp-action="CoverDetail">查询明细</a></td>
+                </tr>
 
             }
 

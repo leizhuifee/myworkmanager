@@ -18,7 +18,7 @@ namespace MyWorkManager.Controllers
     {
         private readonly ICoverRepository _coverRepository;
         private readonly IMapper _mapper;
-        private List<Cover> stockcoversnumber = new List<Cover>();
+        
         public CoverController(ICoverRepository coverRepository,IMapper mapper)
         {
             _coverRepository = coverRepository;
@@ -27,8 +27,8 @@ namespace MyWorkManager.Controllers
         [HttpGet]
         public async Task< IActionResult> Index()
         {
-          var covers= await  _coverRepository.GetCoversAsync(null);
-            var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g => new { Colour = g.Key.Colour, Sleeve = g.Key.Sleeve, Size = g.Key.Size, Type = g.Key.Type, Number = g.Sum(testc => testc.Number) });
+          var covers= await  _coverRepository.GetCoversAsync(null);//查询所有明细
+            var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g => new { Colour = g.Key.Colour, Sleeve = g.Key.Sleeve, Size = g.Key.Size, Type = g.Key.Type, Number = g.Sum(testc => testc.Number) });//根据条件分组明细
             List<Cover> Coversgroup = new List<Cover>();
             foreach (var item in groupcovers)
             {
@@ -54,10 +54,55 @@ namespace MyWorkManager.Controllers
                     }
                 }
 
-            }
+            } //计算库存
+            var coverstockparameter = new CoverStockParameterViewModel()
+            {
+                coverParameter = new CoverParameter() ,
+                covers = Coversgroup
+            };//创建显示对象 包含查询参数 和明细
 
-            stockcoversnumber = Coversgroup;
-            return View(Coversgroup);
+
+            return View(coverstockparameter);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(CoverParameter coverParameter)
+        {
+            var covers = await _coverRepository.GetCoversAsync(coverParameter);//根据参数查询明细
+            var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g => new { Colour = g.Key.Colour, Sleeve = g.Key.Sleeve, Size = g.Key.Size, Type = g.Key.Type, Number = g.Sum(testc => testc.Number) });//分组明细
+            List<Cover> Coversgroup = new List<Cover>();
+            foreach (var item in groupcovers)
+            {
+                if (item.Type == "入库")
+                {
+                    Cover cover = new Cover();
+                    cover.Colour = item.Colour;
+                    cover.Sleeve = item.Sleeve;
+                    cover.Size = item.Size;
+                    cover.Number = item.Number;
+                    Coversgroup.Add(cover);
+                }
+
+            }
+            foreach (var item in groupcovers)
+            {
+                foreach (var i in Coversgroup)
+                {
+                    if (item.Type == "出库" && i.Colour == item.Colour)
+                    {
+                        i.Number -= item.Number;
+
+                    }
+                }
+
+            }//计算库存
+            var coverstockparameter = new CoverStockParameterViewModel()
+            {
+                coverParameter = coverParameter,
+                covers = Coversgroup
+            };//创建显示对象包含参数和明细
+
+
+            return View(coverstockparameter);
         }
         [Authorize(Roles =("Admin"))]
         [HttpGet]

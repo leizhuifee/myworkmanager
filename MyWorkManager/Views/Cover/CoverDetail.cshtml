@@ -3,33 +3,33 @@
 @{ ViewBag.Title = "明细查询";}
 
 
-<div class="container">
+<div class="container  overflow-auto" style="height:1000px">
 
     <form class="form-inline" asp-controller="Cover" asp-action="CoverDetail" method="post">
         <div class="form-group">
             <label for="startime">起始时间:</label>
-            <input type="date" class="form-control" id="startime" value="@Model.coverParameter.StartTime.ToString()" asp-for="@Model.coverParameter.StartTime">
+            <input type="date" class="form-control" id="startime" value="@Model.coverParameter.StartTime.ToString("yyyy-MM-dd")" asp-for="@Model.coverParameter.StartTime">
         </div>
         <div class="form-group">
             <label for="endtime">截至时间:</label>
-            <input type="date" class="form-control" id="endtime" value="@Model.coverParameter.EndTime.ToString()" asp-for="@Model.coverParameter.EndTime">
+            <input type="date" class="form-control" id="endtime" value="@Model.coverParameter.EndTime.ToString("yyyy-MM-dd")" asp-for="@Model.coverParameter.EndTime">
         </div>
         <div class="form-group">
             <label for="Paypath">颜色:</label>
             <select type="date" class="form-control" id="Paypath" value="" asp-for="@Model.coverParameter.Colour" asp-items="Html.GetEnumSelectList<CoverColour>()">
-                
+              
             </select>
         </div>
         <div class="form-group">
             <label for="Colour">款式:</label>
             <select type="date" class="form-control" id="Colour" value="" asp-for="@Model.coverParameter.Sleeve" asp-items="Html.GetEnumSelectList<CoverSleeve>()">
-               
+              
             </select>
         </div>
         <div class="form-group">
             <label for="Colour">尺寸:</label>
             <select type="date" class="form-control" id="Colour" value="" asp-for="@Model.coverParameter.Size" asp-items="Html.GetEnumSelectList<CoverSize>()">
-               
+              
             </select>
         </div>
 
