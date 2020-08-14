@@ -27,8 +27,10 @@ namespace MyWorkManager.Controllers
         [HttpGet]
         public async Task< IActionResult> Index()
         {
+            
           var covers= await  _coverRepository.GetCoversAsync(null);//查询所有明细
             var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g => new { Colour = g.Key.Colour, Sleeve = g.Key.Sleeve, Size = g.Key.Size, Type = g.Key.Type, Number = g.Sum(testc => testc.Number) });//根据条件分组明细
+            
             List<Cover> Coversgroup = new List<Cover>();
             foreach (var item in groupcovers)
             {
@@ -57,7 +59,7 @@ namespace MyWorkManager.Controllers
             } //计算库存
             var coverstockparameter = new CoverStockParameterViewModel()
             {
-                coverParameter = new CoverParameter() ,
+                coverParameter = new CoverParameter() { /*PageNumber = covers.CurrentPage, PageSize = covers.PageSize */},
                 covers = Coversgroup
             };//创建显示对象 包含查询参数 和明细
 
@@ -163,7 +165,7 @@ namespace MyWorkManager.Controllers
         {
             var coveredaitlparameter = new CoverDedailParameterViewModel()
             {
-               coverParameter=new CoverParameter() { StartTime=DateTime.UtcNow,EndTime=DateTime.UtcNow}
+               coverParameter=new CoverParameter() { StartTime=DateTime.UtcNow,EndTime=DateTime.UtcNow, PageNumber = 1, PageSize =50 }
                
             };
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyWorkManager.QueryParameters;
+using MyWorkManager.Helper;
 
 namespace MyWorkManager.Servers
 {
@@ -45,7 +46,7 @@ namespace MyWorkManager.Servers
                     result = result.Where(t => t.creatTime >= coverParameter.StartTime && t.creatTime <= coverParameter.EndTime);
                 }
                
-                if (!coverParameter.Colour.ToString().Contains("全部"))
+                if (!coverParameter.Colour.ToString().Contains("全部") )
                 {
                     result = result.Where(c => c.Colour == coverParameter.Colour);
                 }
@@ -58,14 +59,18 @@ namespace MyWorkManager.Servers
                 {
                     result = result.Where(c => c.Size ==  coverParameter.Size);
                 }
+               
                 if (!coverParameter.Type.Contains("全部"))
-                {
-                    result = result.Where(c => c.Type ==  coverParameter.Type);
-                }
+                   {
+                        result = result.Where(c => c.Type == coverParameter.Type);
+                  }
+                //return await PaginationList<Cover>.CreateAsync(coverParameter.PageNumber, coverParameter.PageSize, result);
             }
-            
-             
-            return await result.ToListAsync();  
+            result = result.Skip(0);
+            result = result.Take(2);
+
+            return await result.ToListAsync() ;
+          
         }
 
         public async Task<IEnumerable<Department>> GetDepartmentsAsync()
