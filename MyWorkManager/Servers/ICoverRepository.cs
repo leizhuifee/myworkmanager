@@ -12,7 +12,7 @@ namespace MyWorkManager.Servers
    {
         Task<IEnumerable<WorkerSize>>  GetWorkerSizesAsync();//获取所有的员工尺寸对应表
         Task<IEnumerable<Department>> GetDepartmentsAsync();//获取所有的部门
-        Task<IEnumerable<Cover>> GetCoversAsync(CoverParameter coverParameter);//获取所有领用信息
+        Task<PaginationList<Cover>> GetCoversAsync(CoverParameter coverParameter);//获取所有领用信息
         Task<WorkerSize> GetWorkerSizeByNameAsync(string name);//根据员工姓名获取员工对应信息
 
         bool ExistWorker(string name);

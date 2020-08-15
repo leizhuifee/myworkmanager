@@ -10,20 +10,24 @@ namespace MyWorkManager.Helper
     {
         public int CurrentPage { get; set; }
         public int PageSize { get; set; }
-        public PaginationList(int currentPage,int pageSize,List<T> items)
+         public int TotalPage { get; set; }
+        public PaginationList(int currentPage,int pageSize,int totalpage, List<T> items)
         {
+            this.TotalPage = totalpage;
             this.CurrentPage = currentPage;
             this.PageSize = pageSize;
             AddRange(items);
         }
 
-        public static async Task< PaginationList<T>> CreateAsync(int currentPage, int pageSize ,IQueryable<T> result)
+        public static async Task< PaginationList<T>> CreateAsync(int currentPage, int pageSize  ,IQueryable<T> result)
         {
+            var datacount= await  result.CountAsync();
+            var totalPage =(int) Math.Ceiling( datacount /Convert.ToDouble( pageSize));
             var skip = (currentPage - 1) * pageSize;
             result = result.Skip(skip);
             result = result.Take(pageSize);
             var items = await result.ToListAsync();
-            return new PaginationList<T>(currentPage, pageSize, items);
+            return new PaginationList<T>(currentPage, pageSize, totalPage, items);
         }
     }
 }

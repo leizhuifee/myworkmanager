@@ -27,8 +27,11 @@ namespace MyWorkManager.Controllers
         [HttpGet]
         public async Task< IActionResult> Index()
         {
-            
-          var covers= await  _coverRepository.GetCoversAsync(null);//查询所有明细
+            var coverParameter = new CoverParameter() { PageNumber = 1,PageSize=10 ,StartTime=Convert.ToDateTime("1000-01-01"),EndTime=DateTime.UtcNow };
+          var covers= await  _coverRepository.GetCoversAsync(coverParameter);//查询所有明细
+            DateTime time = covers[0].creatTime;
+            bool bo = time < DateTime.UtcNow;
+
             var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g => new { Colour = g.Key.Colour, Sleeve = g.Key.Sleeve, Size = g.Key.Size, Type = g.Key.Type, Number = g.Sum(testc => testc.Number) });//根据条件分组明细
             
             List<Cover> Coversgroup = new List<Cover>();
@@ -69,7 +72,9 @@ namespace MyWorkManager.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CoverParameter coverParameter)
         {
-            var covers = await _coverRepository.GetCoversAsync(coverParameter);//根据参数查询明细
+            coverParameter.StartTime = Convert.ToDateTime("1999-01-01");
+            coverParameter.EndTime = DateTime.UtcNow;
+           var covers = await _coverRepository.GetCoversAsync(coverParameter);//根据参数查询明细
             var groupcovers = covers.GroupBy(c => new { c.Colour, c.Sleeve, c.Size, c.Type }).Select(g => new { Colour = g.Key.Colour, Sleeve = g.Key.Sleeve, Size = g.Key.Size, Type = g.Key.Type, Number = g.Sum(testc => testc.Number) });//分组明细
             List<Cover> Coversgroup = new List<Cover>();
             foreach (var item in groupcovers)
@@ -165,7 +170,7 @@ namespace MyWorkManager.Controllers
         {
             var coveredaitlparameter = new CoverDedailParameterViewModel()
             {
-               coverParameter=new CoverParameter() { StartTime=DateTime.UtcNow,EndTime=DateTime.UtcNow, PageNumber = 1, PageSize =50 }
+               coverParameter=new CoverParameter() { StartTime=DateTime.UtcNow,EndTime=DateTime.UtcNow, PageNumber = 1, PageSize =10 }
                
             };
 
@@ -174,6 +179,9 @@ namespace MyWorkManager.Controllers
         public async Task<IActionResult> CoverDetail(CoverParameter coverParameter)
         {
             var covers =await _coverRepository.GetCoversAsync(coverParameter);
+            coverParameter.PageNumber = covers.CurrentPage;
+            coverParameter.PageSize = covers.PageSize;
+            coverParameter.totalPage = covers.TotalPage;
             var coveredaitlparameter = new CoverDedailParameterViewModel()
             {
                 coverParameter = coverParameter,

@@ -8,7 +8,7 @@ namespace MyWorkManager.QueryParameters
 {
     public class CoverParameter
     {
-        public int _pageNumber = 2;
+        public int _pageNumber = 1;
         public int PageNumber { 
             get { return _pageNumber; }
             set
@@ -22,7 +22,7 @@ namespace MyWorkManager.QueryParameters
             get { return _pageSize; }
             set { _pageSize = (value > maxPageSize) ? maxPageSize : value; }
         }
-
+        public int totalPage { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 

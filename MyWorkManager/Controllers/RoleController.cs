@@ -11,7 +11,7 @@ using MyWorkManager.Models;
 
 namespace MyWorkManager.Controllers
 {
-    [Authorize(Roles ="Admin")]
+  //  [Authorize(Roles ="Admin")]
     public class RoleController : Controller
     {
        

@@ -35,42 +35,43 @@ namespace MyWorkManager.Servers
         #endregion
 
         #region 获取所有
-        public async Task<IEnumerable<Cover>> GetCoversAsync(CoverParameter coverParameter)
+        public async Task<PaginationList<Cover>> GetCoversAsync(CoverParameter coverParameter)
         {
-            IQueryable<Cover> result =  _myworkContext.Covers;
-                
-            if (coverParameter!=null)
+            IQueryable<Cover> result = _myworkContext.Covers;
+
+            if (coverParameter != null&&coverParameter.StartTime.Year>1999)
             {
-                if (coverParameter.StartTime.Year>1000&&coverParameter.EndTime.Year>1000)
+                if (coverParameter.StartTime.Year > 2000 && coverParameter.EndTime.Year > 2000)
                 {
+                    
                     result = result.Where(t => t.creatTime >= coverParameter.StartTime && t.creatTime <= coverParameter.EndTime);
                 }
-               
-                if (!coverParameter.Colour.ToString().Contains("全部") )
+
+                if (!coverParameter.Colour.ToString().Contains("全部"))
                 {
                     result = result.Where(c => c.Colour == coverParameter.Colour);
                 }
                 if (!coverParameter.Sleeve.ToString().Contains("全部"))
                 {
-                  
+
                     result = result.Where(c => c.Sleeve == coverParameter.Sleeve);
                 }
                 if (!coverParameter.Size.ToString().Contains("全部"))
                 {
-                    result = result.Where(c => c.Size ==  coverParameter.Size);
+                    result = result.Where(c => c.Size == coverParameter.Size);
+                }
+
+                if (!coverParameter.Type.Contains("全部"))
+                {
+                    result = result.Where(c => c.Type == coverParameter.Type);
                 }
                
-                if (!coverParameter.Type.Contains("全部"))
-                   {
-                        result = result.Where(c => c.Type == coverParameter.Type);
-                  }
-                //return await PaginationList<Cover>.CreateAsync(coverParameter.PageNumber, coverParameter.PageSize, result);
             }
-            result = result.Skip(0);
-            result = result.Take(2);
+            
+           
 
-            return await result.ToListAsync() ;
-          
+            return await PaginationList<Cover>.CreateAsync(coverParameter.PageNumber, coverParameter.PageSize,  result);
+
         }
 
         public async Task<IEnumerable<Department>> GetDepartmentsAsync()
